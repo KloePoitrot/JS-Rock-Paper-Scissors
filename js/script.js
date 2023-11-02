@@ -19,7 +19,24 @@ let isGameFinished = false
 // ===============================================
 let vsComputer = document.querySelector("#vsComputer")
 let vsPlayer = document.querySelector("#vsPlayer")
+let newGame = document.querySelector("#newGame")
 
+function reset(){
+    if(p1 > 0 || p2 > 0){
+        p1 = 0
+        p2 = 0
+        document.querySelector("#player1points").innerHTML = p1
+        document.querySelector("#player2points").innerHTML = p2
+        document.querySelector("#p1img").src = "images/waiting.png"
+        document.querySelector("#p2img").src = "images/waiting.png"
+    }
+}
+
+newGame.addEventListener('click', () =>{
+    reset()
+
+    isGameFinished = false
+})
 vsComputer.addEventListener('click', () =>{
     document.querySelector("#vsComputer").classList.add('modeON')
     document.querySelector("#vsComputer").classList.remove('modeOFF')
@@ -28,14 +45,8 @@ vsComputer.addEventListener('click', () =>{
     document.querySelector("#vsPlayer").classList.add('modeOFF')
     document.querySelector("#vsPlayer").classList.remove('modeON')
     playerOrComp = "Computer"
-    
-    console.log("comp")
-    if(p1 > 0 && p2 > 0){
-        p1 = 0
-        p2 = 0
-        document.querySelector("#p1img").src = "images/waiting.png"
-        document.querySelector("#p2img").src = "images/waiting.png"
-    }
+
+    reset()
 
     isGameFinished = false
 })
@@ -49,15 +60,7 @@ vsPlayer.addEventListener('click', () =>{
     document.querySelector("#vsComputer").classList.remove('modeON')
     playerOrComp = "Player 2"
 
-    console.log("p2")
-    if(p1 > 0 && p2 > 0){
-        p1 = 0
-        p2 = 0
-        document.querySelector("#p1img").src = "images/waiting.png"
-        document.querySelector("#p2img").src = "images/waiting.png"
-        document.querySelector("#p1img").classList.add("fa-pulse")
-        document.querySelector("#p2img").classList.add("fa-pulse")
-    }
+    reset()
     
     isGameFinished = false
 })
