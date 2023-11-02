@@ -19,10 +19,6 @@ let isGameFinished = false
 // // Define weither its the computer or player
 // ===============================================
 // ===============================================
-let vsComputer = document.querySelector("#vsComputer")
-let vsPlayer = document.querySelector("#vsPlayer")
-let newGame = document.querySelector("#newGame")
-
 function reset(){
     if(p1 > 0 || p2 > 0){
         p1 = 0
@@ -37,12 +33,14 @@ function reset(){
     }
 }
 
-newGame.addEventListener('click', () =>{
+
+document.querySelector("#newGame").addEventListener('click', () =>{
     reset()
 
     isGameFinished = false
 })
-vsComputer.addEventListener('click', () =>{
+
+document.querySelector("#vsComputer").addEventListener('click', () =>{
     document.querySelector("#vsComputer").classList.add('modeON')
     document.querySelector("#vsComputer").classList.remove('modeOFF')
     document.querySelector("#playerOrComp").innerHTML = "Computer"
@@ -56,7 +54,7 @@ vsComputer.addEventListener('click', () =>{
     isGameFinished = false
 })
 
-vsPlayer.addEventListener('click', () =>{
+document.querySelector("#vsPlayer").addEventListener('click', () =>{
     document.querySelector("#vsPlayer").classList.add('modeON')
     document.querySelector("#vsPlayer").classList.remove('modeOFF')
     document.querySelector("#playerOrComp").innerHTML = "Player 2"
@@ -80,14 +78,14 @@ vsPlayer.addEventListener('click', () =>{
 // // choice of turn
 // ===============================================
 // ===============================================
+
 let rock = document.querySelector("#rock")
 let paper = document.querySelector("#paper")
 let scissors = document.querySelector("#scissors")
 
-// document.querySelector("#winner")
-rock.addEventListener("click", (e) => playRock())
-paper.addEventListener("click", (e) => playPaper())
-scissors.addEventListener("click", (e) => playScissors())
+rock.addEventListener("click", () => playRock())
+paper.addEventListener("click", () => playPaper())
+scissors.addEventListener("click", () => playScissors())
 
 
 
@@ -96,8 +94,8 @@ function playRock(){
         // p1 plays
         p1Move = "rock"
         playerTurn = 1
-        console.log("p1 rock")
-        console.log(playerTurn)
+        
+        document.querySelector("#currentPlayer").innerHTML = playerOrComp
 
         if(playerOrComp == "Computer" && playerTurn === 1){
             // comp plays
@@ -113,8 +111,6 @@ function playRock(){
         p2Move = "rock"
         playerTurn = 0
         playRound()
-        console.log("p2 rock")
-        console.log(playerTurn)
         return
     }
 }
@@ -124,8 +120,8 @@ function playPaper(){
         // p1 plays
         p1Move = "paper"
         playerTurn = 1
-        console.log("p1 paper")
-        console.log(playerTurn)
+        
+        document.querySelector("#currentPlayer").innerHTML = playerOrComp
 
         if(playerOrComp == "Computer" && playerTurn === 1){
             // comp plays
@@ -153,8 +149,8 @@ function playScissors(){
         // p1 plays
         p1Move = "scissors"
         playerTurn = 1
-        console.log("p1 scissors")
-        console.log(playerTurn)
+        
+        document.querySelector("#currentPlayer").innerHTML = playerOrComp
 
         if(playerOrComp == "Computer" && playerTurn === 1){
             // comp plays
@@ -186,51 +182,45 @@ function playScissors(){
 // ===============================================
 // ===============================================
 function playRound(){
-    p1Move == "rock" ? document.querySelector("#p1img").src = "images/rock.png" : null
-    p1Move == "paper" ? document.querySelector("#p1img").src = "images/paper.png" : null
-    p1Move == "scissors" ? document.querySelector("#p1img").src = "images/scissors.png" : null
-    console.log(p1Move)
-    
-    p2Move == "rock" ? document.querySelector("#p2img").src = "images/rock.png" : null
-    p2Move == "paper" ? document.querySelector("#p2img").src = "images/paper.png" : null
-    p2Move == "scissors" ? document.querySelector("#p2img").src = "images/scissors.png" : null
-    console.log(p2Move)
-
-    // draw
-    if((p1Move == "rock" && p2Move == "rock") || (p1Move == "paper" && p2Move == "paper") || (p1Move == "scissors" && p2Move == "scissors")){
-        p1Move = ""
-        p2Move = ""
-        document.querySelector("#winner").innerHTML = "Its a draw!"
-        document.querySelector("#player1points").innerHTML = p1
-        document.querySelector("#player2points").innerHTML = p2
-        console.log('draw')
-    }
-
-    // p1 won
-    if((p1Move == "rock" && p2Move == "scissors") || (p1Move == "paper" && p2Move == "rock") || (p1Move == "scissors" && p2Move == "paper")){
-        p1 += 1
-        p1Move = ""
-        p2Move = ""
-        document.querySelector("#winner").innerHTML = "Player 1 won this round!"
-        document.querySelector("#player1points").innerHTML = p1
-        document.querySelector("#player2points").innerHTML = p2
-        console.log('p1 win')
-    }
-
-    // p2 won
-    if((p1Move == "rock" && p2Move == "paper") || (p1Move == "paper" && p2Move == "scissors") || (p1Move == "scissors" && p2Move == "rock")){
-        p2 += 1
-        p1Move = ""
-        p2Move = ""
-        document.querySelector("#winner").innerHTML = playerOrComp + " won this round!"
-        document.querySelector("#player1points").innerHTML = p1
-        document.querySelector("#player2points").innerHTML = p2
-
-        console.log('p2 win')
-    }
-    
     if(p1 < 10 && p2 < 10){
-        console.log('keep going')
+        document.querySelector("#currentPlayer").innerHTML = "Player 1"
+
+        p1Move == "rock" ? document.querySelector("#p1img").src = "images/rock.png" : null
+        p1Move == "paper" ? document.querySelector("#p1img").src = "images/paper.png" : null
+        p1Move == "scissors" ? document.querySelector("#p1img").src = "images/scissors.png" : null
+        
+        p2Move == "rock" ? document.querySelector("#p2img").src = "images/rock.png" : null
+        p2Move == "paper" ? document.querySelector("#p2img").src = "images/paper.png" : null
+        p2Move == "scissors" ? document.querySelector("#p2img").src = "images/scissors.png" : null
+
+        // draw
+        if((p1Move == "rock" && p2Move == "rock") || (p1Move == "paper" && p2Move == "paper") || (p1Move == "scissors" && p2Move == "scissors")){
+            p1Move = ""
+            p2Move = ""
+            document.querySelector("#winner").innerHTML = "Its a draw!"
+            document.querySelector("#player1points").innerHTML = p1
+            document.querySelector("#player2points").innerHTML = p2
+        }
+
+        // p1 won
+        if((p1Move == "rock" && p2Move == "scissors") || (p1Move == "paper" && p2Move == "rock") || (p1Move == "scissors" && p2Move == "paper")){
+            p1 += 1
+            p1Move = ""
+            p2Move = ""
+            document.querySelector("#winner").innerHTML = "Player 1 won this round!"
+            document.querySelector("#player1points").innerHTML = p1
+            document.querySelector("#player2points").innerHTML = p2
+        }
+
+        // p2 won
+        if((p1Move == "rock" && p2Move == "paper") || (p1Move == "paper" && p2Move == "scissors") || (p1Move == "scissors" && p2Move == "rock")){
+            p2 += 1
+            p1Move = ""
+            p2Move = ""
+            document.querySelector("#winner").innerHTML = playerOrComp + " won this round!"
+            document.querySelector("#player1points").innerHTML = p1
+            document.querySelector("#player2points").innerHTML = p2
+        }
     }
 
     if(p1 >= 10 || p2 >= 10){
@@ -240,6 +230,7 @@ function playRound(){
 
         document.querySelector(winCrown).classList.add("fa-crown")
         document.querySelector("#winner").innerHTML = winner + " is the winner!"
+        document.querySelector("#currentPlayer").innerHTML = "No one"
         isGameFinished = true
     }
 }
