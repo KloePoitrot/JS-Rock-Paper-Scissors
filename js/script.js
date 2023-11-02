@@ -7,6 +7,8 @@ let p1 = 0
 let p2 = 0
 let p1Move = "" // rock, paper, soissors
 let p2Move = "" // rock, paper, scissors
+let compMove = ["rock", "paper", "scissors"]
+let RandMove = 0
 let playerOrComp = "Computer" // Player 2, Computer
 let playerTurn = 0 // 0 = p1, 1 = p2, 2 = result
 let isGameFinished = false
@@ -29,6 +31,9 @@ function reset(){
         document.querySelector("#player2points").innerHTML = p2
         document.querySelector("#p1img").src = "images/waiting.png"
         document.querySelector("#p2img").src = "images/waiting.png"
+
+        document.querySelector("#p1win").classList.remove("fa-crown")
+        document.querySelector("#p2win").classList.remove("fa-crown")
     }
 }
 
@@ -93,9 +98,17 @@ function playRock(){
         playerTurn = 1
         console.log("p1 rock")
         console.log(playerTurn)
+
+        if(playerOrComp == "Computer" && playerTurn === 1){
+            // comp plays
+            RandMove = Math.floor(Math.random() * 3);
+            p2Move = compMove[RandMove]
+            playerTurn = 0
+            playRound()
+        }
         return
     }
-    if(playerTurn === 1){
+    if(playerOrComp == "Player 2" && playerTurn === 1){
         // p2 plays
         p2Move = "rock"
         playerTurn = 0
@@ -113,6 +126,14 @@ function playPaper(){
         playerTurn = 1
         console.log("p1 paper")
         console.log(playerTurn)
+
+        if(playerOrComp == "Computer" && playerTurn === 1){
+            // comp plays
+            RandMove = Math.floor(Math.random() * 3);
+            p2Move = compMove[RandMove]
+            playerTurn = 0
+            playRound()
+        }
         return
     }
     if(playerTurn === 1){
@@ -134,6 +155,14 @@ function playScissors(){
         playerTurn = 1
         console.log("p1 scissors")
         console.log(playerTurn)
+
+        if(playerOrComp == "Computer" && playerTurn === 1){
+            // comp plays
+            RandMove = Math.floor(Math.random() * 3);
+            p2Move = compMove[RandMove]
+            playerTurn = 0
+            playRound()
+        }
         return
     }
     if(playerTurn === 1){
@@ -160,10 +189,12 @@ function playRound(){
     p1Move == "rock" ? document.querySelector("#p1img").src = "images/rock.png" : null
     p1Move == "paper" ? document.querySelector("#p1img").src = "images/paper.png" : null
     p1Move == "scissors" ? document.querySelector("#p1img").src = "images/scissors.png" : null
+    console.log(p1Move)
     
     p2Move == "rock" ? document.querySelector("#p2img").src = "images/rock.png" : null
     p2Move == "paper" ? document.querySelector("#p2img").src = "images/paper.png" : null
     p2Move == "scissors" ? document.querySelector("#p2img").src = "images/scissors.png" : null
+    console.log(p2Move)
 
     // draw
     if((p1Move == "rock" && p2Move == "rock") || (p1Move == "paper" && p2Move == "paper") || (p1Move == "scissors" && p2Move == "scissors")){
