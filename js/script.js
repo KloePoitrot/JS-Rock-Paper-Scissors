@@ -8,6 +8,7 @@ let p2 = 0
 let p1Move = "" // rock, paper, soissors
 let p2Move = "" // rock, paper, scissors
 let playerOrComp = "Computer" // Player 2, Computer
+let playerTurn = 0 // 0 = p1, 1 = p2, 2 = result
 
 
 // ===============================================
@@ -75,46 +76,72 @@ vsPlayer.addEventListener('click', () =>{
 let rock = document.querySelector("#rock")
 let paper = document.querySelector("#paper")
 let scissors = document.querySelector("#scissors")
-choiceP1(p1Move, p2Move, p1, p2, playerOrComp)
 
 // document.querySelector("#winner")
+rock.addEventListener("click", (e) => playRock())
+paper.addEventListener("click", (e) => playPaper())
+scissors.addEventListener("click", (e) => playScissors())
 
-function choiceP1(p1Move, p2Move, p1, p2, playerOrComp){
-    document.querySelector("#currentPlayer").innerHTML = "Player 1"
-    rock.addEventListener("click", () =>{
+function playRock(){
+    if(playerTurn === 0){
+        // p1 plays
         p1Move = "rock"
-        choiceP2(p1Move, p2Move, p1, p2, playerOrComp)
-    })
+        playerTurn = 1
+        console.log("p1 rock")
+        console.log(playerTurn)
+        return
+    }
+    if(playerTurn === 1){
+        // p2 plays
+        p2Move = "rock"
+        playerTurn = 0
+        playRound()
+        console.log("p2 rock")
+        console.log(playerTurn)
+        return
+    }
+}
 
-    paper.addEventListener("click", () =>{
+function playPaper(){
+    if(playerTurn === 0){
+        // p1 plays
         p1Move = "paper"
-        choiceP2(p1Move, p2Move, p1, p2, playerOrComp)
-    })
-
-    scissors.addEventListener("click", () =>{
-        p1Move = "scissors"
-        choiceP2(p1Move, p2Move, p1, p2, playerOrComp)
-    })
+        playerTurn = 1
+        console.log("p1 paper")
+        console.log(playerTurn)
+        return
+    }
+    if(playerTurn === 1){
+        // p2 plays
+        p2Move = "paper"
+        playerTurn = 0
+        playRound()
+        console.log("p2 paper")
+        console.log(playerTurn)
+        return
+    }
 }
 
-function choiceP2(p1Move, p2Move, p1, p2, playerOrComp){
-    document.querySelector("#currentPlayer").innerHTML = playerOrComp
-    rock.addEventListener("click", () =>{
-        p1Move = "scissors"
-        play(p1Move, p2Move, p1, p2, playerOrComp)
-    })
 
-    paper.addEventListener("click", () =>{
+function playScissors(){
+    if(playerTurn === 0){
+        // p1 plays
         p1Move = "scissors"
-        play(p1Move, p2Move, p1, p2, playerOrComp)
-    })
-
-    scissors.addEventListener("click", () =>{
-        p1Move = "scissors"
-        play(p1Move, p2Move, p1, p2, playerOrComp)
-    })
+        playerTurn = 1
+        console.log("p1 scissors")
+        console.log(playerTurn)
+        return
+    }
+    if(playerTurn === 1){
+        // p2 plays
+        p2Move = "scissors"
+        playerTurn = 0
+        playRound()
+        console.log("p2 scissors")
+        console.log(playerTurn)
+        return
+    }
 }
-
 
 
 
@@ -125,63 +152,39 @@ function choiceP2(p1Move, p2Move, p1, p2, playerOrComp){
 // // Winner function
 // ===============================================
 // ===============================================
-function play(p1Move, p2Move, p1, p2, playerOrComp){
+function playRound(){
     // draw
-    if((p1 == "rock" && p2 == "rock") || (p1 == "paper" && p2 == "paper") || (p1 == "scissors" && p2 == "scissors")){
-        
+    if((p1Move == "rock" && p2Move == "rock") || (p1Move == "paper" && p2Move == "paper") || (p1Move == "scissors" && p2Move == "scissors")){
+        p1Move = ""
+        p2Move = ""
+        document.querySelector("#winner").innerHTML = "Its a draw!"
+        console.log('draw')
     }
 
     // p1 won
-    if((p1 == "rock" && p2 == "scissors") || (p1 == "paper" && p2 == "rock") || (p1 == "scissors" && p2 == "paper")){
-        p1 += 1
-        
+    if((p1Move == "rock" && p2Move == "scissors") || (p1Move == "paper" && p2Move == "rock") || (p1Move == "scissors" && p2Move == "paper")){
+        p1Move += 1
+        p1Move = ""
+        p2Move = ""
+        document.querySelector("#winner").innerHTML = "Player 1 won this round!"
+        console.log('p1 win')
     }
 
     // p2 won
-    if((p1 == "rock" && p2 == "paper") || (p1 == "paper" && p2 == "scissors") || (p1 == "scissors" && p2 == "rock")){
+    if((p1Move == "rock" && p2Move == "paper") || (p1Move == "paper" && p2Move == "scissors") || (p1Move == "scissors" && p2Move == "rock")){
         p2 += 1
-        
+        p1Move = ""
+        p2Move = ""
+        document.querySelector("#winner").innerHTML = playerOrComp + "won this round!"
 
+        console.log('p2 win')
+    }
+    
+    if(p1 < 10 && p2 < 10){
+        console.log('keep going')
     }
 
+    if(p1 >= 10 || p2 >= 10){
+        console.log('finished')
+    }
 }
-
-    
-// if(playerTurn === "player1"){
-//     document.querySelector("#currentPlayer").innerHTML = "Player 1"
-//     rock.addEventListener("click", () =>{
-//         console.log("waa")
-//         p1Move = "rock"
-//         playerTurn = "player2"
-//     })
-
-//     paper.addEventListener("click", () =>{
-//         p1Move = "paper"
-//         playerTurn = "player2"
-//     })
-
-//     scissors.addEventListener("click", () =>{
-//         p1Move = "scissors"
-//         playerTurn = "player2"
-//     })
-// }
-
-// if(playerTurn === "player2"){
-//     document.querySelector("#currentPlayer").innerHTML = playerOrComp
-//     rock.addEventListener("click", () =>{
-//         console.log("wee")
-
-//         p1Move = "rock"
-//         playerTurn = "player1"
-//     })
-
-//     paper.addEventListener("click", () =>{
-//         p1Move = "paper"
-//         playerTurn = "player1"
-//     })
-
-//     scissors.addEventListener("click", () =>{
-//         p1Move = "scissors"
-//         playerTurn = "player1"
-//     })
-// }
