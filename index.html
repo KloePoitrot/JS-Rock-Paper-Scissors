@@ -14,10 +14,10 @@
             <nav>
                 <div>
                     <ul class="headerButton">
-                        <li id="newGame">NEW GAME</li>
+                        <li id="newGame">NEW GAME:</li>
                         <li class="modeON" id="vsComputer"><i class="fas fa-computer"></i> VS Computer</li>
                         <li class="modeOFF" id="vsPlayer"><i class="fas fa-user"></i> VS Player</li>
-                        <li>Turns <input type="number" value="10"></li>
+                        <li>Points <input type="number" value="10"></li>
                     </ul>
                 </div>
                 <div>
@@ -31,15 +31,15 @@
         <main>
             <section>
                 <h1>ROCK, PAPER, SCISSOR, SHOOT!</h1>
-                <h2>Player 1 won this round!</h2>
-                <h3 class="lowOpa">Turn <span id="currentTurn">1</span>/<span id="amountGames">10</span></h3>
+                <h2 id="winner">Player 1 won this round!</h2>
+                <h3 class="lowOpa">Player 1: <span id="player1points">0</span> | <span id="playerOrComp">Computer</span>: <span id="player2points">0</span></h3>
                 <!-- Player 1/2 won this round!
                     Congrats! Player 1 won the game! -->
     
                 <div id="shoot">
                     <article>
                         <i class="fas fa-crown" id="p1win"></i>
-                        <img class="fa-pulse" src="images/waiting.png" alt="">
+                        <img id="p1img" class="fa-pulse" src="images/waiting.png" alt="">
                         <h3 class="player">Player 1</h3>
                     </article>
                     
@@ -47,28 +47,30 @@
 
                     <article>
                         <i class="" id="p2win"></i>
-                        <img class="fa-pulse" src="images/waiting.png" alt="">
+                        <img id="p2img" class="fa-pulse" src="images/waiting.png" alt="">
                         <h3 class="player" id="playerOrComp">Player 2</h3>
                     </article>
                 </div>
     
                 <div id="choose">
                     <h2><span id="currentPlayer">Player 1</span> is choosing<span class="dot-animation">...</span></h2>
-                    <article>
+                    <article id="rock">
                         <img src="images/rock.png" alt="rock">
                         <p>Rock</p>
                     </article>
                     
-                    <article>
+                    <article id="paper">
                         <img src="images/paper.png" alt="paper">
                         <p>Paper</p>
                     </article>
     
-                    <article>
+                    <article id="scissors">
                         <img src="images/scissors.png" alt="scissors">
                         <p>Scissors</p>
                     </article>
                 </div>
+
+                <a href="">Restart game?</a>
     
             </section>
     
