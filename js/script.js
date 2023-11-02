@@ -11,7 +11,7 @@ let compMove = ["rock", "paper", "scissors"]
 let RandMove = 0
 let playerOrComp = "Computer" // Player 2, Computer
 let playerTurn = 0 // 0 = p1, 1 = p2, 2 = result
-let isGameFinished = false
+let maxWinMoves = 10
 
 
 // ===============================================
@@ -33,11 +33,13 @@ function reset(){
     }
 }
 
+document.querySelector("#winMoves").addEventListener("change", (e) => {
+    maxWinMoves = e.target.value
+    reset()
+})
 
 document.querySelector("#newGame").addEventListener('click', () =>{
     reset()
-
-    isGameFinished = false
 })
 
 document.querySelector("#vsComputer").addEventListener('click', () =>{
@@ -50,8 +52,6 @@ document.querySelector("#vsComputer").addEventListener('click', () =>{
     playerOrComp = "Computer"
 
     reset()
-
-    isGameFinished = false
 })
 
 document.querySelector("#vsPlayer").addEventListener('click', () =>{
@@ -64,8 +64,6 @@ document.querySelector("#vsPlayer").addEventListener('click', () =>{
     playerOrComp = "Player 2"
 
     reset()
-    
-    isGameFinished = false
 })
 
 
@@ -182,7 +180,7 @@ function playScissors(){
 // ===============================================
 // ===============================================
 function playRound(){
-    if(p1 < 10 && p2 < 10){
+    if(p1 < maxWinMoves && p2 < maxWinMoves){
         document.querySelector("#currentPlayer").innerHTML = "Player 1"
 
         p1Move == "rock" ? document.querySelector("#p1img").src = "images/rock.png" : null
@@ -223,14 +221,13 @@ function playRound(){
         }
     }
 
-    if(p1 >= 10 || p2 >= 10){
+    if(p1 >= maxWinMoves || p2 >= maxWinMoves){
         console.log('finished')
-        let winner = p1 >= 10 ? "Player 1" : playerOrComp
-        let winCrown = p1 >= 10 ? "#p1win" : "#p2win"
+        let winner = p1 >= maxWinMoves ? "Player 1" : playerOrComp
+        let winCrown = p1 >= maxWinMoves ? "#p1win" : "#p2win"
 
         document.querySelector(winCrown).classList.add("fa-crown")
         document.querySelector("#winner").innerHTML = winner + " is the winner!"
         document.querySelector("#currentPlayer").innerHTML = "No one"
-        isGameFinished = true
     }
 }
