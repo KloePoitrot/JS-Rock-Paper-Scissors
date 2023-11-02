@@ -3,17 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/855d440054.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="/images/victory.png">
+    <link rel="stylesheet" href="css/style.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <header>
+    <div class="body">
+        <header>
+            <nav>
+                <div>
+                    <ul class="headerButton">
+                        <li id="newGame">NEW GAME</li>
+                        <li class="modeON" id="vsComputer"><i class="fas fa-computer"></i> VS Computer</li>
+                        <li class="modeOFF" id="vsPlayer"><i class="fas fa-user"></i> VS Player</li>
+                        <li>Turns <input type="number" value="10"></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="headerButton">
+                        <li id="saveLog"><i class="fas fa-download"></i> Save Game Log</li>
+                        <li id="gitHubButton"><a href="https://github.com/KloePoitrot"><i class="fab fa-github"></i> Check my other projects</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <section>
+                <h1>ROCK, PAPER, SCISSOR, SHOOT!</h1>
+                <h2>Player 1 won this round!</h2>
+                <h3 class="lowOpa">Turn <span id="currentTurn">1</span>/<span id="amountGames">10</span></h3>
+                <!-- Player 1/2 won this round!
+                    Congrats! Player 1 won the game! -->
+    
+                <div id="shoot">
+                    <article>
+                        <i class="fas fa-crown" id="p1win"></i>
+                        <img class="fa-pulse" src="images/waiting.png" alt="">
+                        <h3 class="player">Player 1</h3>
+                    </article>
+                    
+                    <h2>VS</h2>    
 
-    </header>
-    <main>
-
-    </main>
-    <footer>
-        
-    </footer>
+                    <article>
+                        <i class="" id="p2win"></i>
+                        <img class="fa-pulse" src="images/waiting.png" alt="">
+                        <h3 class="player" id="playerOrComp">Player 2</h3>
+                    </article>
+                </div>
+    
+                <div id="choose">
+                    <h2><span id="currentPlayer">Player 1</span> is choosing<span class="dot-animation">...</span></h2>
+                    <article>
+                        <img src="images/rock.png" alt="rock">
+                        <p>Rock</p>
+                    </article>
+                    
+                    <article>
+                        <img src="images/paper.png" alt="paper">
+                        <p>Paper</p>
+                    </article>
+    
+                    <article>
+                        <img src="images/scissors.png" alt="scissors">
+                        <p>Scissors</p>
+                    </article>
+                </div>
+    
+            </section>
+    
+            <aside id="log">
+                <h2>Game log</h2>
+                <div id="gameLog">
+                    <h3>NEW GAME</h3>
+                    <p>Log here</p>
+                </div>
+            </aside>
+        </main>
+        <footer>
+            © Kloé Poitrot - <a href="https://github.com/KloePoitrot/JS-Rock-Paper-Scissors">Github Repository</a> - Images are made by me and are free to reuse.
+        </footer>
+    </div>
 </body>
 </html>

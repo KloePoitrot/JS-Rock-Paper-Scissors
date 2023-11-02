@@ -1,0 +1,248 @@
+:root{
+    --background:#1a1a1f;
+    --bgbutton:#2e2e38;
+    --color:#fff;
+    --radius:2rem;
+}
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+}
+ul{
+    list-style: none;
+    padding:0
+}
+a{
+    color:var(--color);
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+==================
+===========================
+    BOX
+===========================
+================== 
+*/
+body{
+    margin:3rem;
+    background:#9593a5;
+    max-width:1500px;
+    margin:3rem auto
+}
+.body{
+    color:var(--color);
+    padding:3rem;
+    background:var(--background);
+    border-radius: var(--radius);
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+==================
+===========================
+    HEADER
+===========================
+================== 
+*/
+nav, nav div ul{
+    display:flex;
+}
+nav{
+    justify-content: space-between;
+    padding-bottom: 3rem;
+}
+nav div ul{
+    gap:1rem;
+}
+
+.headerButton li{
+    background:var(--bgbutton);
+    color:var(--color);
+    padding:0.5rem 1rem;
+    border-radius:var(--radius);
+}
+
+/* buttons color */
+.modeON{
+    background:#2f8033!important;
+}
+.modeOFF{
+    background:#802f2f!important;
+}
+#saveLog{
+    background:#7d2f80
+}
+#gitHubButton{
+    background:#2f4280
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+==================
+===========================
+    MAIN
+===========================
+================== 
+*/
+main{
+    display:flex;
+    gap:3rem
+}
+
+section{
+    flex:1;
+}
+h1{
+    font-size:3rem;
+    margin-bottom:2rem
+}
+h2{
+    margin-bottom:0.5rem
+}
+.lowOpa{
+    opacity: 0.5;
+}
+
+
+/* Game */
+#shoot{
+    display:flex;
+    justify-content: center;
+}
+
+#shoot article{
+    background:var(--bgbutton);
+    color:var(--color);
+    border-radius: var(--radius);
+    margin:2rem;
+    height:200px;
+    width:200px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#shoot h2{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#shoot article i{
+    position:absolute;
+    margin-top:-13rem;
+    font-size: 2rem;
+}
+
+
+/* select */
+#choose{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    margin:2rem 10rem;
+    margin-bottom:3rem
+}
+#choose h2 {
+    grid-column: 1 / 4;
+    margin-bottom:1rem;
+    font-size:1.25rem;
+}
+
+#choose article{
+    transition: 0.5s;
+    background:var(--background);
+    color:var(--color);
+    border-radius: var(--radius);
+    height:160px;
+    width:160px;
+    border: 3px outset var(--background);
+    display:flex;
+    justify-content: center;
+    justify-self: center;
+    align-items: center;
+    flex-direction: column;
+}
+#choose article:hover{
+    background:var(--bgbutton);
+    transition: 0.1s;
+}
+#choose article:active{
+    background:var(--background);
+    border: 3px inset var(--background);
+    transition: 0.1s;
+}
+#choose p{
+    position:absolute;
+    background:var(--bgbutton);
+    padding:0.5rem 1rem;
+    margin-top:10rem;
+    border-radius: var(--radius);
+    background:var(--bgbutton)
+}
+
+
+
+
+
+
+
+
+/*
+==================
+===========================
+    GAMELOG
+===========================
+================== 
+*/
+aside{
+    width:400px;
+    height:100%;
+}
+#gameLog{
+    min-height:500px;
+    max-height: 500px;
+    overflow: auto;
+    background:var(--bgbutton);
+    border-radius: var(--radius);
+    padding:2rem;
+    text-align: left;
+}
+#gameLog h3{
+
+}
