@@ -42,7 +42,7 @@ document.querySelector("#winMoves").addEventListener("change", (e) => {
 })
 
 
-// RESET COMPUTER GAME
+// RESET GAME
 document.querySelector("#newGame").addEventListener('click', () =>{
     if(newGame == false){
         document.querySelector("#gameLog").innerHTML += "<h3 class='newGameHeading'>" + nmbrGame + " - NEW GAME: VS " + playerOrComp + "</h3>"
@@ -115,15 +115,9 @@ document.querySelector("#vsPlayer").addEventListener('click', () =>{
 // ===============================================
 // ===============================================
 
-let rock = document.querySelector("#rock")
-let paper = document.querySelector("#paper")
-let scissors = document.querySelector("#scissors")
-
-rock.addEventListener("click", () => playRock())
-paper.addEventListener("click", () => playPaper())
-scissors.addEventListener("click", () => playScissors())
-
-
+document.querySelector("#rock").addEventListener("click", () => playRock())
+document.querySelector("#paper").addEventListener("click", () => playPaper())
+document.querySelector("#scissors").addEventListener("click", () => playScissors())
 
 function playRock(){
     newGame = false
@@ -136,7 +130,7 @@ function playRock(){
 
         if(playerOrComp == "Computer" && playerTurn === 1){
             // comp plays
-            RandMove = Math.floor(Math.random() * 3);
+            RandMove = Math.floor(Math.random() * 3)
             p2Move = compMove[RandMove]
             playerTurn = 0
             playRound()
@@ -163,7 +157,7 @@ function playPaper(){
 
         if(playerOrComp == "Computer" && playerTurn === 1){
             // comp plays
-            RandMove = Math.floor(Math.random() * 3);
+            RandMove = Math.floor(Math.random() * 3)
             p2Move = compMove[RandMove]
             playerTurn = 0
             playRound()
@@ -193,7 +187,7 @@ function playScissors(){
 
         if(playerOrComp == "Computer" && playerTurn === 1){
             // comp plays
-            RandMove = Math.floor(Math.random() * 3);
+            RandMove = Math.floor(Math.random() * 3)
             p2Move = compMove[RandMove]
             playerTurn = 0
             playRound()
@@ -221,7 +215,6 @@ function playScissors(){
 // ===============================================
 // ===============================================
 function playRound(){
-    newGame = false
     if(p1 < maxWinMoves && p2 < maxWinMoves){
         document.querySelector("#currentPlayer").innerHTML = "Player 1"
 
@@ -297,3 +290,17 @@ document.querySelector("button").addEventListener("click", () => {
     document.querySelector("#gameLog").innerHTML = "<h3>1 - NEW GAME: VS " + playerOrComp + "</h3>"
 
 })
+
+
+
+    
+
+
+
+
+
+// ===============================================
+// ===============================================
+// // Download game log
+// ===============================================
+// ===============================================
