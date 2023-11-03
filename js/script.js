@@ -12,6 +12,8 @@ let RandMove = 0
 let playerOrComp = "Computer" // Player 2, Computer
 let playerTurn = 0 // 0 = p1, 1 = p2, 2 = result
 let maxWinMoves = 10
+let newGame = true
+let nmbrGame = 2
 
 
 // ===============================================
@@ -23,6 +25,7 @@ function reset(){
     if(p1 > 0 || p2 > 0){
         p1 = 0
         p2 = 0
+
         document.querySelector("#player1points").innerHTML = p1
         document.querySelector("#player2points").innerHTML = p2
         document.querySelector("#p1img").src = "images/waiting.png"
@@ -33,16 +36,38 @@ function reset(){
     }
 }
 
+// SELECT MOVE GAME
 document.querySelector("#winMoves").addEventListener("change", (e) => {
     maxWinMoves = e.target.value
-    reset()
 })
 
+
+// RESET COMPUTER GAME
 document.querySelector("#newGame").addEventListener('click', () =>{
+    if(newGame == false){
+        document.querySelector("#gameLog").innerHTML += "<h3 class='newGameHeading'>" + nmbrGame + " - NEW GAME: VS " + playerOrComp + "</h3>"
+        nmbrGame++
+        newGame = true
+    }
+    document.querySelector("#winner").innerHTML = "New game!"
     reset()
 })
 
+// NEW COMPUTER GAME
 document.querySelector("#vsComputer").addEventListener('click', () =>{
+    if(playerOrComp == "Player 2"){
+        document.querySelector("#gameLog").innerHTML += "<h3 class='newGameHeading'>" + nmbrGame + " - NEW GAME: VS Computer</h3>"
+        nmbrGame++
+        newGame = true
+    }
+    if(newGame == false && playerOrComp == "Computer"){
+        document.querySelector("#gameLog").innerHTML += "<h3 class='newGameHeading'>" + nmbrGame + " - NEW GAME: VS " + playerOrComp + "</h3>"
+        nmbrGame++
+        newGame = true
+    }
+
+    document.querySelector("#winner").innerHTML = "New game!"
+
     document.querySelector("#vsComputer").classList.add('modeON')
     document.querySelector("#vsComputer").classList.remove('modeOFF')
     document.querySelector("#playerOrComp").innerHTML = "Computer"
@@ -54,7 +79,20 @@ document.querySelector("#vsComputer").addEventListener('click', () =>{
     reset()
 })
 
+// NEW PLAYER GAME
 document.querySelector("#vsPlayer").addEventListener('click', () =>{
+    if(playerOrComp == "Computer"){
+        document.querySelector("#gameLog").innerHTML += "<h3 class='newGameHeading'>" + nmbrGame + " - NEW GAME: VS Player 2</h3>"
+        nmbrGame++
+        newGame = true
+    }
+    if(newGame == false && playerOrComp == "Player 2"){
+        document.querySelector("#gameLog").innerHTML += "<h3 class='newGameHeading'>" + nmbrGame + " - NEW GAME: VS " + playerOrComp + "</h3>"
+        nmbrGame++
+        newGame = true
+    }
+    document.querySelector("#winner").innerHTML = "New game!"
+
     document.querySelector("#vsPlayer").classList.add('modeON')
     document.querySelector("#vsPlayer").classList.remove('modeOFF')
     document.querySelector("#playerOrComp").innerHTML = "Player 2"
@@ -88,6 +126,7 @@ scissors.addEventListener("click", () => playScissors())
 
 
 function playRock(){
+    newGame = false
     if(playerTurn === 0){
         // p1 plays
         p1Move = "rock"
@@ -114,6 +153,7 @@ function playRock(){
 }
 
 function playPaper(){
+    newGame = false
     if(playerTurn === 0){
         // p1 plays
         p1Move = "paper"
@@ -143,6 +183,7 @@ function playPaper(){
 
 
 function playScissors(){
+    newGame = false
     if(playerTurn === 0){
         // p1 plays
         p1Move = "scissors"
@@ -180,6 +221,7 @@ function playScissors(){
 // ===============================================
 // ===============================================
 function playRound(){
+    newGame = false
     if(p1 < maxWinMoves && p2 < maxWinMoves){
         document.querySelector("#currentPlayer").innerHTML = "Player 1"
 
@@ -230,4 +272,6 @@ function playRound(){
         document.querySelector("#winner").innerHTML = winner + " is the winner!"
         document.querySelector("#currentPlayer").innerHTML = "No one"
     }
+
+    document.querySelector("#gameLog").innerHTML += "<p><span clas='bold'>Player 1:</span> " + p1 + " | <span clas='bold'>" + playerOrComp + ":</span> " + p2 + "</p>"
 }

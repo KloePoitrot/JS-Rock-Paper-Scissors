@@ -100,7 +100,11 @@ nav div ul{
     background:#2f4280
 }
 
-
+input {
+    width:50px;
+    text-align:center;
+    border-radius:var(--radius)
+}
 
 
 
@@ -240,9 +244,19 @@ aside{
     overflow: auto;
     background:var(--bgbutton);
     border-radius: var(--radius);
-    padding:2rem;
+    padding:2rem 0;
     text-align: left;
 }
 #gameLog h3{
-
+    border:2px solid var(--background);
+    border-left:none;
+    border-right:none;
+    padding:7px 2rem 5px 2rem;
+    margin-bottom:5px
+}
+#gameLog p{
+    padding:0 2rem;
+}
+.newGameHeading{
+    margin-top:1.5rem
 }
