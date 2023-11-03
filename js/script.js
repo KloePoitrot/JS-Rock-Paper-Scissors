@@ -1,6 +1,6 @@
 // ===============================================
 // ===============================================
-// // Init Vaiables
+// // Init Variables
 // ===============================================
 // ===============================================
 let p1 = 0
@@ -32,6 +32,8 @@ function reset(){
         document.querySelector("#player2points").innerHTML = p2
         document.querySelector("#p1img").src = "images/waiting.png"
         document.querySelector("#p2img").src = "images/waiting.png"
+        document.querySelector("#p1img").classList.add('fa-spin')
+        document.querySelector("#p2img").classList.add('fa-spin')
 
         document.querySelector("#p1win").classList.remove("fa-crown")
         document.querySelector("#p2win").classList.remove("fa-crown")
@@ -183,8 +185,6 @@ function playPaper(){
         p2Move = "paper"
         playerTurn = 0
         playRound()
-        console.log("p2 paper")
-        console.log(playerTurn)
         return
     }
 }
@@ -213,8 +213,6 @@ function playScissors(){
         p2Move = "scissors"
         playerTurn = 0
         playRound()
-        console.log("p2 scissors")
-        console.log(playerTurn)
         return
     }
 }
@@ -239,6 +237,9 @@ function playRound(){
         p2Move == "rock" ? document.querySelector("#p2img").src = "images/rock.png" : null
         p2Move == "paper" ? document.querySelector("#p2img").src = "images/paper.png" : null
         p2Move == "scissors" ? document.querySelector("#p2img").src = "images/scissors.png" : null
+
+        document.querySelector("#p1img").classList.remove('fa-spin')
+        document.querySelector("#p2img").classList.remove('fa-spin')
 
         // draw
         if((p1Move == "rock" && p2Move == "rock") || (p1Move == "paper" && p2Move == "paper") || (p1Move == "scissors" && p2Move == "scissors")){
@@ -296,7 +297,6 @@ function playRound(){
     // ===============================================
     // ===============================================
     if(p1 >= maxWinMoves || p2 >= maxWinMoves){
-        console.log('finished')
         let winner = p1 >= maxWinMoves ? "Player 1" : playerOrComp
         let winCrown = p1 >= maxWinMoves ? "#p1win" : "#p2win"
 
@@ -310,7 +310,6 @@ function playRound(){
     if(p1 >= maxWinMoves || p2 >= maxWinMoves){
         isGameFinished = true
         if(isGameFinished = true){
-            console.log('finished')
             let winner = p1 >= maxWinMoves ? "Player 1" : playerOrComp
             let winCrown = p1 >= maxWinMoves ? "#p1win" : "#p2win"
 
@@ -355,3 +354,23 @@ document.querySelector("button").addEventListener("click", () => {
 // // Download game log
 // ===============================================
 // ===============================================
+document.querySelector('#saveLog').addEventListener("click", () => {
+    let logContent = document.querySelector("#gameLog").innerText
+    let date = new Date()
+
+    download("GameLog_RockPaperScissors_" + date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear() + "_" + date.getHours()  + "-" + date.getMinutes() + ".txt", logContent)
+})
+
+
+function download(filename, text) {
+    let element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
