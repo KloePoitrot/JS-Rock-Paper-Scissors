@@ -1,6 +1,8 @@
 # Rock, Paper, Scissors!
 Rock, paper scissors project done with Javascript.
 
+Live preview: https://kloepoitrot.github.io/JS-RockPaperScissors/
+
 ## Features available
 * Play against a computer or yout friend.
 * Choose the number of winning moves necessary to claim victory.
