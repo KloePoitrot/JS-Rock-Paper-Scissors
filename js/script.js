@@ -273,5 +273,27 @@ function playRound(){
         document.querySelector("#currentPlayer").innerHTML = "No one"
     }
 
+
+
+    
+
+
+
+
+
+    // ===============================================
+    // ===============================================
+    // // Update log
+    // ===============================================
+    // ===============================================
+    // Update
     document.querySelector("#gameLog").innerHTML += "<p><span clas='bold'>Player 1:</span> " + p1 + " | <span clas='bold'>" + playerOrComp + ":</span> " + p2 + "</p>"
 }
+
+//reset log
+document.querySelector("button").addEventListener("click", () => {
+    nmbrGame = 2
+    newGame = true
+    document.querySelector("#gameLog").innerHTML = "<h3>1 - NEW GAME: VS " + playerOrComp + "</h3>"
+
+})
