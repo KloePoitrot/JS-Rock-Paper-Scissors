@@ -14,6 +14,7 @@ let playerTurn = 0 // 0 = p1, 1 = p2, 2 = result
 let maxWinMoves = 10
 let newGame = true
 let nmbrGame = 2
+let isGameFinished = false
 
 
 // ===============================================
@@ -23,6 +24,7 @@ let nmbrGame = 2
 // ===============================================
 function reset(){
     if(p1 > 0 || p2 > 0){
+        isGameFinished = false
         p1 = 0
         p2 = 0
 
@@ -115,9 +117,21 @@ document.querySelector("#vsPlayer").addEventListener('click', () =>{
 // ===============================================
 // ===============================================
 
-document.querySelector("#rock").addEventListener("click", () => playRock())
-document.querySelector("#paper").addEventListener("click", () => playPaper())
-document.querySelector("#scissors").addEventListener("click", () => playScissors())
+document.querySelector("#rock").addEventListener("click", () => {
+    if(isGameFinished == false){
+        playRock()
+    }
+})
+document.querySelector("#paper").addEventListener("click", () => {
+    if(isGameFinished == false){
+        playPaper()
+    }
+})
+document.querySelector("#scissors").addEventListener("click", () => {
+    if(isGameFinished == false){
+        playScissors()
+    }
+})
 
 function playRock(){
     newGame = false
@@ -228,8 +242,6 @@ function playRound(){
 
         // draw
         if((p1Move == "rock" && p2Move == "rock") || (p1Move == "paper" && p2Move == "paper") || (p1Move == "scissors" && p2Move == "scissors")){
-            p1Move = ""
-            p2Move = ""
             document.querySelector("#winner").innerHTML = "Its a draw!"
             document.querySelector("#player1points").innerHTML = p1
             document.querySelector("#player2points").innerHTML = p2
@@ -238,8 +250,6 @@ function playRound(){
         // p1 won
         if((p1Move == "rock" && p2Move == "scissors") || (p1Move == "paper" && p2Move == "rock") || (p1Move == "scissors" && p2Move == "paper")){
             p1 += 1
-            p1Move = ""
-            p2Move = ""
             document.querySelector("#winner").innerHTML = "Player 1 won this round!"
             document.querySelector("#player1points").innerHTML = p1
             document.querySelector("#player2points").innerHTML = p2
@@ -248,22 +258,10 @@ function playRound(){
         // p2 won
         if((p1Move == "rock" && p2Move == "paper") || (p1Move == "paper" && p2Move == "scissors") || (p1Move == "scissors" && p2Move == "rock")){
             p2 += 1
-            p1Move = ""
-            p2Move = ""
             document.querySelector("#winner").innerHTML = playerOrComp + " won this round!"
             document.querySelector("#player1points").innerHTML = p1
             document.querySelector("#player2points").innerHTML = p2
         }
-    }
-
-    if(p1 >= maxWinMoves || p2 >= maxWinMoves){
-        console.log('finished')
-        let winner = p1 >= maxWinMoves ? "Player 1" : playerOrComp
-        let winCrown = p1 >= maxWinMoves ? "#p1win" : "#p2win"
-
-        document.querySelector(winCrown).classList.add("fa-crown")
-        document.querySelector("#winner").innerHTML = winner + " is the winner!"
-        document.querySelector("#currentPlayer").innerHTML = "No one"
     }
 
 
@@ -279,11 +277,64 @@ function playRound(){
     // // Update log
     // ===============================================
     // ===============================================
-    // Update
-    document.querySelector("#gameLog").innerHTML += "<p><span clas='bold'>Player 1:</span> " + p1 + " | <span clas='bold'>" + playerOrComp + ":</span> " + p2 + "</p>"
+    document.querySelector("#gameLog").innerHTML += "<p><span clas='bold'>Player 1:</span> " + p1Move + " (" + p1 + ") • <span clas='bold'>" + playerOrComp + ":</span> " + p2Move + " (" + p2 + ")</p>"
+    
+    p1Move = ""
+    p2Move = ""
+
+
+
+    
+
+
+
+
+
+    // ===============================================
+    // ===============================================
+    // // Winner condition
+    // ===============================================
+    // ===============================================
+    if(p1 >= maxWinMoves || p2 >= maxWinMoves){
+        console.log('finished')
+        let winner = p1 >= maxWinMoves ? "Player 1" : playerOrComp
+        let winCrown = p1 >= maxWinMoves ? "#p1win" : "#p2win"
+
+        document.querySelector(winCrown).classList.add("fa-crown")
+        document.querySelector("#winner").innerHTML = winner + " is the winner!"
+        document.querySelector("#currentPlayer").innerHTML = "No one"
+
+        
+
+    }
+    if(p1 >= maxWinMoves || p2 >= maxWinMoves){
+        isGameFinished = true
+        if(isGameFinished = true){
+            console.log('finished')
+            let winner = p1 >= maxWinMoves ? "Player 1" : playerOrComp
+            let winCrown = p1 >= maxWinMoves ? "#p1win" : "#p2win"
+
+            document.querySelector(winCrown).classList.add("fa-crown")
+            document.querySelector("#winner").innerHTML = winner + " is the winner!"
+            document.querySelector("#currentPlayer").innerHTML = "No one"
+            document.querySelector("#gameLog").innerHTML += "<p>" + winner + " is the winner! <i class='fas fa-crown' id='p2win'></i></p>"
+        }
+    }
 }
 
-//reset log
+
+
+    
+
+
+
+
+
+// ===============================================
+// ===============================================
+// // Update log
+// ===============================================
+// ===============================================
 document.querySelector("button").addEventListener("click", () => {
     nmbrGame = 2
     newGame = true

@@ -1,5 +1,6 @@
 :root{
     --background:#282833;
+    --darkhighligh:#1a1a20;
     --bgbutton:#43435a;
     --color:#fff;
     --radius:2rem;
@@ -109,7 +110,7 @@ nav div ul{
 .headerButton li:hover{
     cursor: pointer;
     transition: 0.1s;
-    background:#000!important;
+    background:var(--darkhighligh)!important;
 }
 #points{
     cursor: unset;
@@ -162,7 +163,10 @@ section{
 }
 h1{
     font-size:3rem;
-    margin-bottom:2rem
+    margin-bottom:1rem;
+    background:var(--darkhighligh);
+    padding:1rem;
+    border-radius:var(--radius)
 }
 h2{
     margin-bottom:0.5rem
@@ -220,12 +224,12 @@ h2{
 
 #choose article{
     transition: 0.5s;
-    background:var(--background);
+    background:var(--darkhighligh);
     color:var(--color);
     border-radius: var(--radius);
     height:160px;
     width:160px;
-    border: 3px outset var(--background);
+    border: 3px solid var(--background);
     display:flex;
     justify-content: center;
     justify-self: center;
@@ -238,8 +242,8 @@ h2{
     transition: 0.1s;
 }
 #choose article:active{
-    background:var(--background);
-    border: 3px inset var(--background);
+    background:var(--darkhighligh);
+    border: 3px inset var(--darkhighligh);
     transition: 0.1s;
 }
 #choose p{
@@ -279,7 +283,7 @@ aside{
     text-align: left;
 }
 #gameLog h3{
-    border:2px solid var(--background);
+    border:2px solid var(--darkhighligh);
     border-left:none;
     border-right:none;
     padding:7px 2rem 5px 2rem;
@@ -293,11 +297,11 @@ aside{
 }
 
 #log button{
-    background:var(--background);
+    background:var(--darkhighligh);
     color: var(--color);
     border-radius: var(--radius);
     padding:0.5rem 1rem;
-    border: 3px outset var(--background);
+    border: 3px solid var(--darkhighligh);
     transition: 0.5s;
     margin-top:-1rem;
     margin-bottom:3rem
@@ -305,6 +309,7 @@ aside{
 #log button:hover{
     cursor: pointer;
     transition: 0.1s;
+    border: 3px solid var(--bgbutton);
     background:var(--bgbutton);
 }
 #log button:active{
