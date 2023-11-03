@@ -11,10 +11,33 @@ let compMove = ["rock", "paper", "scissors"]
 let RandMove = 0
 let playerOrComp = "Computer" // Player 2, Computer
 let playerTurn = 0 // 0 = p1, 1 = p2, 2 = result
-let maxWinMoves = 10
+let maxWinMoves = 3
 let newGame = true
 let nmbrGame = 2
 let isGameFinished = false
+
+
+
+
+
+
+
+// ===============================================
+// ===============================================
+// // Sound loading
+// ===============================================
+// ===============================================
+let rockThrow = new Audio('sounds/rockthrow.m4a')
+let paperFold = new Audio('sounds/paperfold.m4a')
+let scissorsCut = new Audio('sounds/scissorscut.m4a')
+let victory = new Audio('sounds/victory.m4a')
+let loose = new Audio('sounds/losttocomp.m4a')
+
+
+
+
+
+
 
 
 // ===============================================
@@ -121,22 +144,32 @@ document.querySelector("#vsPlayer").addEventListener('click', () =>{
 
 document.querySelector("#rock").addEventListener("click", () => {
     if(isGameFinished == false){
+        if(playerOrComp == "Computer"){
+            rockThrow.play()
+        }
         playRock()
     }
 })
 document.querySelector("#paper").addEventListener("click", () => {
     if(isGameFinished == false){
+        if(playerOrComp == "Computer"){
+            paperFold.play()
+        }
         playPaper()
     }
 })
 document.querySelector("#scissors").addEventListener("click", () => {
     if(isGameFinished == false){
+        if(playerOrComp == "Computer"){
+            scissorsCut.play()
+        }
         playScissors()
     }
 })
 
 function playRock(){
     newGame = false
+
     if(playerTurn === 0){
         // p1 plays
         p1Move = "rock"
@@ -164,6 +197,7 @@ function playRock(){
 
 function playPaper(){
     newGame = false
+
     if(playerTurn === 0){
         // p1 plays
         p1Move = "paper"
@@ -304,7 +338,11 @@ function playRound(){
         document.querySelector("#winner").innerHTML = winner + " is the winner!"
         document.querySelector("#currentPlayer").innerHTML = "No one"
 
-        
+        if(playerOrComp == "Computer" && winner == "Computer"){
+            loose.play()
+        } else {
+            victory.play()
+        }
 
     }
     if(p1 >= maxWinMoves || p2 >= maxWinMoves){
