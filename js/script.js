@@ -436,3 +436,73 @@ function download(filename, text) {
 
     document.body.removeChild(element);
 }
+
+
+
+    
+
+
+
+
+
+// ===============================================
+// ===============================================
+// // Skin change
+// ===============================================
+// ===============================================
+
+document.querySelector("#skins").addEventListener("change", (e) => {
+    let mode = e.target.value
+    
+    // MAIN MODE
+    if(mode == "main"){
+        document.documentElement.style.setProperty('--background', '#282833');
+        document.documentElement.style.setProperty('--darkhighligh', '#1a1a20');
+        document.documentElement.style.setProperty('--bgbutton', '#43435a');
+        document.documentElement.style.setProperty('--color', '#fff');
+        document.documentElement.style.setProperty('--link', '#a0b1dc');
+        document.documentElement.style.setProperty('--modeON', '#2f8033');
+        document.documentElement.style.setProperty('--modeOFF', '#802f2f');
+        document.documentElement.style.setProperty('--saveLog', '#7d2f80');
+        document.documentElement.style.setProperty('--gitHub', '#4d70e4');
+    
+        document.body.style.backgroundImage = "url('../images/krystal-ng-PrQqQVPzmlw-unsplash.jpg')"
+        document.body.style.backgroundColor = 'none'
+    }
+
+    // LIGHT MODE
+    if(mode == "light"){
+        document.documentElement.style.setProperty('--background', '#ffffff');
+        document.documentElement.style.setProperty('--darkhighligh', '#eaeaf8');
+        document.documentElement.style.setProperty('--bgbutton', '#c9c9e7');
+        document.documentElement.style.setProperty('--color', '#000');
+        document.documentElement.style.setProperty('--link', '#6f90e6');
+        document.documentElement.style.setProperty('--modeON', '#78e27d');
+        document.documentElement.style.setProperty('--modeOFF', '#df6464');
+        document.documentElement.style.setProperty('--saveLog', '#c186e9');
+        document.documentElement.style.setProperty('--gitHub', '#97cff0');
+
+        document.body.style.backgroundImage = "none"
+        document.body.style.backgroundColor = '#cdcfe6'
+    }
+
+    
+    
+    
+
+    // LIGHT MODE
+    if(mode == "dark"){
+        document.documentElement.style.setProperty('--background', '#0d0c0e');
+        document.documentElement.style.setProperty('--darkhighligh', '#141316');
+        document.documentElement.style.setProperty('--bgbutton', '#1b1a1f');
+        document.documentElement.style.setProperty('--color', '#fff');
+        document.documentElement.style.setProperty('--link', '#a0b1dc');
+        document.documentElement.style.setProperty('--modeON', '#2f8033');
+        document.documentElement.style.setProperty('--modeOFF', '#802f2f');
+        document.documentElement.style.setProperty('--saveLog', '#7d2f80');
+        document.documentElement.style.setProperty('--gitHub', '#4d70e4');
+
+        document.body.style.backgroundImage = "none"
+        document.body.style.backgroundColor = '#000'
+    }
+})

@@ -1,10 +1,20 @@
 :root{
+    /* Main mode */
     --background:#282833;
     --darkhighligh:#1a1a20;
     --bgbutton:#43435a;
     --color:#fff;
     --radius:2rem;
+
+    --link:#a0b1dc;
+    --modeON:#2f8033;
+    --modeOFF:#802f2f;
+    --saveLog:#7d2f80;
+    --gitHub:#4d70e4;
+    --h:#0d0c0e;
 }
+
+
 
 *{
     font-family: Arial, Helvetica, sans-serif;
@@ -15,13 +25,13 @@ ul{
     padding:0
 }
 a{
-    color:#a0b1dc;
+    color:var(--link);
     transition: 0.5s;
     text-decoration: none;
 }
 a:hover{
     transition: 0.1s;
-    color:#fff;
+    color:var(--color);
 }
 
 ::-webkit-scrollbar {
@@ -119,16 +129,16 @@ nav div ul{
 
 /* buttons color */
 .modeON{
-    background:#2f8033!important;
+    background:var(--modeON)!important;
 }
 .modeOFF{
-    background:#802f2f!important;
+    background:var(--modeOFF)!important;
 }
 #saveLog{
-    background:#7d2f80
+    background:var(--saveLog)
 }
 #gitHubButton{
-    background:#2f4280;
+    background:var(--gitHub);
 }
 
 input {
@@ -329,11 +339,31 @@ aside{
 /*
 ==================
 ===========================
+    Skin
+===========================
+================== 
+*/
+#skins{
+    top:15px;
+    right:15px;
+    position: absolute;
+    border-radius: var(--radius);
+}
+
+
+
+
+
+
+
+
+/*
+==================
+===========================
     RESPONSIVE 1512PX
 ===========================
 ================== 
 */
-
 @media screen and (max-width: 1512px) {
     .body {
         border-radius:0
@@ -434,7 +464,6 @@ aside{
 ===========================
 ================== 
 */
-
 @media screen and (max-width: 652px) {
     .body{
         padding:3rem 1rem;
