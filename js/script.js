@@ -27,7 +27,7 @@ let isGameFinished = false
 // // Sound loading
 // ===============================================
 // ===============================================
-let rockThrow = new Audio('sounds/rockthrow.m4a')
+let rockThrow = new Audio('sounds/rockthrow.wav')
 let paperFold = new Audio('sounds/paperfold.m4a')
 let scissorsCut = new Audio('sounds/scissorscut.m4a')
 let victory = new Audio('sounds/victory.m4a')
@@ -264,13 +264,37 @@ function playRound(){
     if(p1 < maxWinMoves && p2 < maxWinMoves){
         document.querySelector("#currentPlayer").innerHTML = "Player 1"
 
-        p1Move == "rock" ? document.querySelector("#p1img").src = "images/rock.png" : null
-        p1Move == "paper" ? document.querySelector("#p1img").src = "images/paper.png" : null
-        p1Move == "scissors" ? document.querySelector("#p1img").src = "images/scissors.png" : null
-        
-        p2Move == "rock" ? document.querySelector("#p2img").src = "images/rock.png" : null
-        p2Move == "paper" ? document.querySelector("#p2img").src = "images/paper.png" : null
-        p2Move == "scissors" ? document.querySelector("#p2img").src = "images/scissors.png" : null
+        if(p1Move == "rock"){
+            document.querySelector("#p1img").src = "images/rock.png"
+            rockThrow.play()
+        }
+        if(p1Move == "paper"){
+            document.querySelector("#p1img").src = "images/paper.png"
+            paperFold.play()
+        }
+        if(p1Move == "scissors"){
+            document.querySelector("#p1img").src = "images/scissors.png"
+            scissorsCut.play()
+        }
+
+        if(p2Move == "rock"){
+            document.querySelector("#p2img").src = "images/rock.png"
+            if(playerOrComp == "Player 2"){
+                rockThrow.play()
+            }
+        }
+        if(p2Move == "paper"){
+            document.querySelector("#p2img").src = "images/paper.png"
+            if(playerOrComp == "Player 2"){
+                paperFold.play()
+            }
+        }
+        if(p2Move == "scissors"){
+            document.querySelector("#p2img").src = "images/scissors.png"
+            if(playerOrComp == "Player 2"){
+                scissorsCut.play()
+            }
+        }
 
         document.querySelector("#p1img").classList.remove('fa-spin')
         document.querySelector("#p2img").classList.remove('fa-spin')

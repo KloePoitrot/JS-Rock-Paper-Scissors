@@ -16,7 +16,7 @@ Images were created by myself, feel free to use them for your own projects!
 Background credits: https://unsplash.com/fr/photos/pierre-de-quarts-de-cristal-violet-PrQqQVPzmlw
 
 Sound credits:
-* Rock: https://www.youtube.com/watch?v=8Hl9F7_SZ_c
+* Rock: https://freesound.org/people/F.M.Audio/sounds/572753/
 * Paper: https://www.youtube.com/watch?v=UUHFovDlZFs
 * Scissors: https://www.youtube.com/watch?v=_xPDd5irdY0
 * victory: https://www.youtube.com/watch?v=IWHA8I3Nklw
